@@ -1,8 +1,10 @@
 import profileimg from "../assets/images/profileimg.jpeg";
+// import Header from "./Header";
 
 function Hero() {
     return (
         <section id="hero-section" className="m5-btm">
+            
             <div id="hero-content">
                 <img src={profileimg} alt="Image of Prashant" />
                 <h2 className="titleTxt">Hi there! I am Prashant...</h2>
