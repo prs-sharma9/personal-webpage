@@ -3,7 +3,7 @@ import Navbar from "./Navbar";
 
 function Header() : JSX.Element {
     return (
-        <header className="m5-btm">
+        <header className="bg-gray-800 text-center">
             <Navbar />
         </header>
     );

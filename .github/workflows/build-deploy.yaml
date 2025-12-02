@@ -1,0 +1,66 @@
+name: Deploy React App to GitHub Pages
+
+# Controls when the action will run.
+on:
+  push:
+    branches:
+      - main # Trigger deployment when changes are pushed to the 'main' branch
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+# Grant GITHUB_TOKEN the necessary permissions to deploy to GitHub Pages
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# This job builds the app and prepares the artifact for deployment
+jobs:
+  build:
+    name: Build React App
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      # 1. Setup Node.js Environment
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: "npm" # Use caching for faster dependency installation
+
+      # 2. Install Dependencies
+      - name: Install dependencies
+        run: npm ci # Use 'npm ci' for faster, clean installs in CI environments
+
+      # 3. Build the React Application
+      - name: Build production app
+        # This command creates the optimized static files in the 'build' folder
+        run: npm run build
+
+      # 4. Configure GitHub Pages Artifact
+      - name: Setup Pages
+        uses: actions/configure-pages@v4
+
+      # 5. Upload Artifact
+      # This saves the 'build' folder content as a deployable artifact
+      - name: Upload Artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: "./dist" # Path to your production ready files (default for create-react-app)
+
+  # This job deploys the uploaded artifact to GitHub Pages
+  deploy:
+    name: Deploy to Pages
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    needs: build # Wait for the build job to complete successfully
+
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4 # The official GitHub action for Pages deployment
