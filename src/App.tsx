@@ -1,33 +1,19 @@
-import './App.css'
-import { BrowserRouter, Routes, Route } from 'react-router'
-import Home from './pages/Home'
-import Projects from './pages/Projects'
-import Contact from './pages/Contact'
-import Hero from './components/Hero'
-import Footer from './components/Footer'
-import Header from './components/Header'
+import Experience from "./components/Experience";
+import Footer from "./components/Footer";
+import Header from "./components/Header";
+import HeroBanner from "./components/HeroBanner";
+import Projects from "./components/Projects";
 
 function App() {
-
   return (
-    <>
-    <BrowserRouter>
+    <div className="min-h-screen bg-root-primary text-text-primary overflow-hidden">
       <Header />
-      <div id='page'>
-        <Hero />
-        <main id='main-content' className='m5-btm'>
-          <Routes>
-            <Route path='/' element={<Home />}/>
-            <Route path='/projects' element={<Projects />}/>
-            <Route path='/contact' element={<Contact />}/>
-          </Routes>
-        </main>
-        <Footer />
-      </div>
-      
-    </BrowserRouter>
-    </>
-  )
+      <HeroBanner />
+      <Experience />
+      <Projects />
+      <Footer />
+    </div>
+  );
 }
 
-export default App
+export default App;
