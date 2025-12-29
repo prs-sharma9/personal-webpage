@@ -72,7 +72,7 @@ const Experience = () => {
                         }`}
                       >
                         <div className="flex flex-col justify-center items-center">
-                          <p className="text-xl font-extrabold">
+                          <p className="text-xl font-extrabold px-6 text-center">
                             {exp.company}
                           </p>
                           <p className="text-lg sm:text-sm md:text-md">
