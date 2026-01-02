@@ -1,10 +1,12 @@
+
+
 const HeroBanner = () => {
   return (
     <section className="relative min-h-screen flex justify-center items-center mt-14 sm:mt-16 md:mt-20">
       <div className="hidden md:block w-full h-full">
         <img
           className="absolute inset-0 h-full w-full object-cover rounded-b-xl"
-          src="/images/hero.jpg"
+          src="images/hero.jpg"
           alt="Image of Calgary Downtown"
         />
         
@@ -16,7 +18,7 @@ const HeroBanner = () => {
         
         <img
           className="absolute inset-0 h-full w-full object-cover rounded-b-xl"
-          src="/images/hero_sm.jpg"
+          src="images/hero_sm.jpg"
           alt="Image of Calgary Downtown"
         />
         

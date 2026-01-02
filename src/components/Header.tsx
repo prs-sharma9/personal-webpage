@@ -15,7 +15,7 @@ const Header = () => {
             >
               <img
                 className="w-8 h-8 sm:w-12 sm:h-12 rounded-full border border-text-primary"
-                src="/images/profileimg.jpeg"
+                src="images/profileimg.jpeg"
                 alt="Profile image of Prashant Sharma"
               />
               <p className="hidden md:block font-semibold text-xl text-text-primary">
